@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 import 'package:muslim/utilites/constants/constants.dart';
+import 'package:muslim/utilites/get_it.dart';
 import 'package:muslim/utilites/router_config.dart';
 
 /// TODO  : ============================>> INIT APP <<=====================================///
@@ -21,7 +25,9 @@ import 'package:muslim/utilites/router_config.dart';
 /// TODO : ============================>> DEBUGGING / TESTING <<=====================================///
 /// TODO : ============================>> RELEASING APP <<=====================================///
 //-------------------------------------------------------------------------------------------------------------------------//
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetLocator.initLocator();
   runApp(const EntryPoint());
 }
 
