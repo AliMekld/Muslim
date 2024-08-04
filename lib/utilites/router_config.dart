@@ -6,5 +6,8 @@ GoRouter get router => _router;
 GoRouter _router = GoRouter(
   initialLocation: "/",
   navigatorKey: _navigationKey,
-  routes: [],
+  routes: [
+
+
+  ],
 );
