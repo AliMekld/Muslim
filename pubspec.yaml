@@ -1,7 +1,7 @@
 name: muslim
 description: "Muslim APP"
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -14,12 +14,33 @@ dependencies:
 
 
   cupertino_icons: ^1.0.6
+  # RESPONSIVE CONFIG
   flutter_screenutil: ^5.9.3
+  # MANGING ROUTING
   go_router: ^14.2.1
+  # LOCAL STORAGE
   shared_preferences: ^2.2.3
+  # INJECTOR
   get_it: ^7.7.0
+  # STATE NOTIFIER
   provider: ^6.1.2
+  # HANDLE MVC PATTERN
   mvc_pattern: ^8.12.0
+  # CALLING BACK END
+  http: ^1.2.2
+  # HANDLE REQUEST STATUS
+  dartz: ^0.10.1
+  # SERIALIZING
+  build_runner: ^2.4.11
+  json_serializable: ^6.8.0
+  copy_with_extension: ^4.0.0
+  copy_with_extension_gen: ^4.0.4
+  json_annotation: ^4.9.0
+  # COMPARING TWO OBJECTS
+  equatable: ^2.0.5
+
+
+
 #  Set App Icon
 #  Set App Splash
   flutter_native_splash: ^2.4.1
@@ -51,9 +72,33 @@ flutter_native_splash:
 flutter:
   uses-material-design: true
 
+  fonts:
+  - family:
+    fonts:
+      - asset: assets/fonts/soosi.ttf
+      - style: normal
+#==================================================//
+  - family: sallem
+    fonts:
+      - asset: assets/fonts/sallem.ttf
+      - style: normal
+#==================================================//
+  - family: NaskhNastaleeq
+    fonts:
+      - asset: assets/fonts/NaskhNastaleeq.ttf
+      - style: normal
+#==================================================//
+  - family: UthmanicHafs
+    fonts:
+      - asset: assets/fonts/UthmanicHafs.ttf
+      - style: normal
+#==================================================//
+  - family: warsh
+    fonts:
+      - asset: assets/fonts/warsh.ttf
+      - style: normal
+
   assets:
-#    - i18n/
-#    - i18n/ar.json
-#    - i18n/en.json
     - assets/images/
+    - assets/fonts/
 

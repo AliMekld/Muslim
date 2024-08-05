@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get_it/get_it.dart';
 import 'package:muslim/utilites/constants/constants.dart';
 import 'package:muslim/utilites/get_it.dart';
 import 'package:muslim/utilites/router_config.dart';
@@ -51,6 +50,7 @@ class EntryPoint extends StatelessWidget {
       return ScreenUtilInit(
         designSize: appSize,
         child: MaterialApp.router(
+          debugShowCheckedModeBanner: false,
           routerConfig: router,
         ),
       );
