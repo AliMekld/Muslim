@@ -8,7 +8,7 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  StateMVC<StatefulWidget> createState() => _SplashScreenState();
+  StateMVC<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends StateMVC<SplashScreen> {
@@ -17,6 +17,13 @@ class _SplashScreenState extends StateMVC<SplashScreen> {
   }
   late SplashController con;
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero).then((_) async => await con.getAllSurahs());
+    print("From initState");
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -24,6 +31,15 @@ class _SplashScreenState extends StateMVC<SplashScreen> {
           "بسم الله الرحمن الرحيم",
           style: TextStyleHelper.headerMedium34,
         ),
+      ),
+      body: ListView.builder(
+        itemCount: con.surahs.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            onTap: () {},
+            title: Text(con.surahs[index].ayahs.fold("s", (c, p) => "$c $p"),style: TextStyleHelper.bodyMedium14,),
+          );
+        },
       ),
     );
   }
