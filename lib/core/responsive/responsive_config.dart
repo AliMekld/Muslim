@@ -7,18 +7,20 @@ class ResponsiveConfig extends StatelessWidget {
   final Widget mediumScreen;
   final Widget smallScreen;
 
-  const ResponsiveConfig(
-      {required this.largeScreen,
-      required this.mediumScreen,
-      required this.smallScreen,
-      super.key});
+  const ResponsiveConfig({
+    required this.largeScreen,
+    required this.mediumScreen,
+    required this.smallScreen,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth <= Constants.smallSizeConstraints) {
+      if (constraints.maxWidth <= Constants.smallScreenMaxHeight) {
         return smallScreen;
-      } else if (constraints.maxWidth <= Constants.mediumSizeConstraints) {
+      } else if (constraints.maxWidth <= Constants.mediumScreenMaxHeight &&
+          constraints.minWidth > Constants.smallScreenMaxHeight) {
         return mediumScreen;
       } else {
         return largeScreen;

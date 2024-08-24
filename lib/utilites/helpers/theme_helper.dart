@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///-
 enum AppFonts {
@@ -31,6 +30,7 @@ class TextStyleHelper extends ChangeNotifier {
         _appFont = AppFonts.uthmanicHafs;
       case AppFonts.warsh:
         _appFont = AppFonts.warsh;
+      // ignore: constant_pattern_never_matches_value_type
       case null:
         _appFont = AppFonts.soosi;
         notifyListeners();

@@ -1,11 +1,9 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'ayah_model.dart';
-
 part 'surah_model.g.dart';
 
-@$CopyWithPlaceholder()
+@CopyWith(skipFields: true)
 @JsonSerializable()
 class SurahModel {
   final int? number;
@@ -13,13 +11,13 @@ class SurahModel {
   final String? englishName;
   final String? englishNameTranslation;
   final String? revelationType;
-  final List<AyahModel> ayahs;
+
 
   SurahModel({
     this.number,
     this.name,
     this.englishName,
-    this.ayahs = const [],
+    // this.ayahs = const [],
     this.englishNameTranslation,
     this.revelationType,
   });

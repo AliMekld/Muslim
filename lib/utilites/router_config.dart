@@ -1,7 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:muslim/modules/Splash_screen/splash_screen.dart';
+import 'package:muslim/modules/HomeScreen/home_screen.dart';
+import 'package:muslim/modules/QuranScreen/quran_screen.dart';
+import 'package:muslim/modules/SplashScreen/splash_screen.dart';
+
 
 GlobalKey<NavigatorState> _navigationKey = GlobalKey<NavigatorState>();
 GoRouter get router => _router;
@@ -16,7 +19,56 @@ GoRouter _router = GoRouter(
         const SplashScreen(),
         state,
       ),
-      routes: const [],
+    ),
+    GoRoute(
+      name: HomeScreen.routeName,
+      path: "/${HomeScreen.routeName}",
+      pageBuilder: (context, state) => _customTransitionPage(
+        const HomeScreen(),
+        state,
+      ),
+      routes:  [
+        /// Quran Screen
+        GoRoute(
+          name: QuranScreen.routeName,
+          path: QuranScreen.routeName,
+          pageBuilder: (context, state) => _customTransitionPage(
+            const QuranScreen(),
+            state,
+          ),
+          routes: const [],
+        ),
+        // GoRoute(
+        //   name: QuranScreen.routeName,
+        //   path: "${QuranScreen.routeName}",
+        //   pageBuilder: (context, state) => _customTransitionPage(
+        //     const QuranScreen(),
+        //     state,
+        //   ),
+        //   routes: const [],
+        // ),
+        //
+        // GoRoute(
+        //   name: QuranScreen.routeName,
+        //   path: "/${QuranScreen.routeName}",
+        //   pageBuilder: (context, state) => _customTransitionPage(
+        //     const QuranScreen(),
+        //     state,
+        //   ),
+        //   routes: const [],
+        // ),
+        //
+        // GoRoute(
+        //   name: QuranScreen.routeName,
+        //   path: "/${QuranScreen.routeName}",
+        //   pageBuilder: (context, state) => _customTransitionPage(
+        //     const QuranScreen(),
+        //     state,
+        //   ),
+        //   routes: const [],
+        // ),
+
+      ],
     ),
   ],
 );

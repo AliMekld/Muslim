@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'ayah_model.g.dart';
 
-@$CopyWithPlaceholder()
+@CopyWith(skipFields: true)
 @JsonSerializable()
 class AyahModel {
   final int? number;

@@ -40,15 +40,18 @@ class EntryPoint extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constants) {
       Size appSize;
-      if (constants.maxWidth <= Constants.smallSizeConstraints) {
+      if (constants.maxWidth <= Constants.smallScreenMaxHeight) {
         appSize = largeSize;
-      } else if (constants.maxWidth <= Constants.mediumSizeConstraints) {
+      } else if (constants.maxWidth <= Constants.mediumScreenMaxHeight) {
         appSize = mediumSize;
       } else {
         appSize = largeSize;
       }
       return ScreenUtilInit(
         designSize: appSize,
+        enableScaleText: (){
+          return true;
+        },
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
           routerConfig: router,

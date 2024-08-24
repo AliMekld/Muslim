@@ -1,84 +1,83 @@
 import 'dart:convert';
+import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
+// ignore: depend_on_referenced_packages
+import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
-import 'package:muslim/core/api/error_helper.dart';
 
-enum RequestType { get, post, put, delete }
-
+import 'error_helper.dart';
+enum MethodCRUDType{
+  get,post,put,delete
+}
 class RequestMethods {
-
-  final RequestType type;
+  /// 1- Api Response Model
+  /// 2- Create Parameters Of Parent Class[done]
   final String url;
-  final Map<String, dynamic>? body;
+  final Map<String, String>? body;
   final Map<String, String>? headers;
   final Map<String, String>? queryParameters;
+  final MethodCRUDType methodType;
 
-  RequestMethods.get(
-    this.url, {
-    this.queryParameters,
-  })  : type = RequestType.get,
+  /// 3- Create a Named Constructor For Each Type[done]
+  RequestMethods.get({required this.url, this.queryParameters})
+      : body = null,
         headers = {},
-        body = {};
-  //-
-  RequestMethods.post(this.url, this.body, {this.queryParameters})
-      : type = RequestType.post,
-        headers = {};
+        methodType = MethodCRUDType.get;
+  RequestMethods.post({required this.url, required this.body, this.queryParameters})
+      : headers = {},
+        methodType = MethodCRUDType.post;
+  RequestMethods.put({required this.url, required this.body, this.queryParameters})
+      : headers = {},
+        methodType = MethodCRUDType.put;
+  RequestMethods.delete({required this.url, this.queryParameters})
+      : headers = {},
+        body = null,
+        methodType = MethodCRUDType.delete;
 
-  //-
-  RequestMethods.put(this.url, this.body, {this.queryParameters})
-      : type = RequestType.put,
-        headers = {};
-
-  //-
-  RequestMethods.delete(this.url, {this.queryParameters})
-      : type = RequestType.delete,
-        headers = {},
-        body = {};
-
-  Future<http.Response> _requestByType() async {
-    debugPrint("url: $url");
-    headers?.addAll({'Content-Type': 'application/json'});
-    debugPrint("headers: $headers");
-
-
-
-    http.Response response;
-    switch (type) {
-      case RequestType.get:
-        response = await http.get(
-          Uri(path: url, queryParameters: queryParameters),
-          headers: headers,
+  Future<Response> _method(MethodCRUDType methodType) async {
+    final Map<String, String> headers = {
+    
+    };
+    switch (methodType) {
+      case MethodCRUDType.get:
+        return http.get(
+          Uri.parse(url),
+          headers: this.headers?..addAll(headers),
         );
-      case RequestType.post:
-        response = await http.post(
-          Uri(path: url, queryParameters: queryParameters),
-          body: body,
-          headers: headers,
+      case MethodCRUDType.post:
+        return http.post(
+          Uri.parse(url),
+          body: jsonEncode(body),
+          headers: this.headers?..addAll(headers),
         );
-      case RequestType.put:
-        response = await http.put(
-          Uri(path: url, queryParameters: queryParameters),
-          body: body,
-          headers: headers,
+      case MethodCRUDType.put:
+        return http.put(
+          Uri.parse(url),
+          body: jsonEncode(body),
+          headers: this.headers?..addAll(headers),
         );
-      case RequestType.delete:
-        response = await http.delete(
-          Uri(path: url, queryParameters: queryParameters),
-          headers: headers,
+      case MethodCRUDType.delete:
+        return http.delete(
+          Uri.parse(url),
+          headers: this.headers?..addAll(headers),
         );
     }
-    return response;
   }
 
-  Future<http.Response> doRequest() async {
-   ///TODO :Fix Error Here
+  Future<http.Response> makeRequest() async {
+    http.Response response = await _method(methodType);
     try {
-      final response = await _requestByType();
-      // print(jsonDecode(response));
-      return response;
+      if (response.statusCode == 200) {
+        return response;
+      } else {
+        throw Exception("TYPE ERROR ${response.statusCode}");
+      }
+    } on SocketException catch (e) {
+      throw ServerException(e.message);
+    } on FormatException catch (e) {
+      throw ServerException(e.message);
     } on Exception catch (e) {
-      throw Failure(e.toString()).handleException();
+      throw ServerException(e.toString());
     }
   }
 }

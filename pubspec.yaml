@@ -38,7 +38,8 @@ dependencies:
   json_annotation: ^4.9.0
   # COMPARING TWO OBJECTS
   equatable: ^2.0.5
-
+  # Svg Pictures
+  flutter_svg: ^2.0.10+1
 
 
 #  Set App Icon
@@ -73,7 +74,7 @@ flutter:
   uses-material-design: true
 
   fonts:
-  - family:
+  - family: soosi
     fonts:
       - asset: assets/fonts/soosi.ttf
       - style: normal
@@ -86,7 +87,7 @@ flutter:
   - family: NaskhNastaleeq
     fonts:
       - asset: assets/fonts/NaskhNastaleeq.ttf
-      - style: normal
+        style: normal
 #==================================================//
   - family: UthmanicHafs
     fonts:
