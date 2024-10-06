@@ -7,12 +7,12 @@ import 'package:muslim/utilites/get_it.dart';
 import 'package:muslim/utilites/router_config.dart';
 
 /// TODO  : ============================>> INIT APP <<=====================================///
-/// -> MVC PATTERN                    =>  MCV PACKAGE -- SINGLETON CLASS -- STATE MVC -- CONTROLLER MVC
+/// -> MVC PATTERN                    =>  MCV PACKAGE -- SINGLETON CLASS -- STATE MVC -- CONTROLLER MVC [done]
 /// -> STATE MANAGEMENT               =>  PROVIDER
 /// -> LOCAL STORAGE                  =>  SHARED PREFS
 /// -> MULTI LANGUAGE SUPPORT         =>  I18N => INTEL > PROVIDER > SHARED PREFS
 /// -> THEMING                        =>  THEME DATA    > PROVIDER > SHARED PREFS
-/// -> DEPENDENCY INJECTION           =>  GET IT
+/// -> DEPENDENCY INJECTION           =>  GET IT [done]
 /// -> RESPONSIVE DESIGN              =>  SCREEN UTIL & LAYOUT BUILDER
 /// -> ROUTING NAVIGATION HANDLER     =>  GO ROUTER
 /// TODO : ============================>> CREATE SCREENS  <<=====================================///
@@ -24,6 +24,7 @@ import 'package:muslim/utilites/router_config.dart';
 /// TODO : ============================>> DEBUGGING / TESTING <<=====================================///
 /// TODO : ============================>> RELEASING APP <<=====================================///
 //-------------------------------------------------------------------------------------------------------------------------//
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetLocator.initLocator();

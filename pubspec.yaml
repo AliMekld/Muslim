@@ -77,27 +77,22 @@ flutter:
   - family: soosi
     fonts:
       - asset: assets/fonts/soosi.ttf
-      - style: normal
 #==================================================//
   - family: sallem
     fonts:
       - asset: assets/fonts/sallem.ttf
-      - style: normal
 #==================================================//
   - family: NaskhNastaleeq
     fonts:
       - asset: assets/fonts/NaskhNastaleeq.ttf
-        style: normal
 #==================================================//
   - family: UthmanicHafs
     fonts:
       - asset: assets/fonts/UthmanicHafs.ttf
-      - style: normal
 #==================================================//
   - family: warsh
     fonts:
       - asset: assets/fonts/warsh.ttf
-      - style: normal
 
   assets:
     - assets/images/

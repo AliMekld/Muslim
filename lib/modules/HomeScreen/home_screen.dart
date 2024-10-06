@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:muslim/generated/assets.dart';
 import 'package:muslim/models/surah_model.dart';
 import 'package:muslim/utilites/constants/constants.dart';
 import 'package:muslim/utilites/extenstions.dart';
@@ -51,15 +52,25 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                   style: TextStyleHelper.headerMedium34.copyWith(height: 2),
                 ),
               ),
+              SliverToBoxAdapter(
+                child:      32.0.heightBox,
+              ),
+         
               SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return CustomCardWidget(item: con.cardList[index]);
-                    },
-                    childCount: con.cardList.length,
-                  ),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2))
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                    return CustomCardWidget(item: con.cardList[index]);
+                  },
+                  childCount: con.cardList.length,
+                ),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 16,
+                    mainAxisExtent: 160,
+                    crossAxisCount: 2,
+                    // childAspectRatio: 16 / 9,
+                    mainAxisSpacing: 16,
+                    ),
+              )
             ]),
           ),
         ),
@@ -78,40 +89,40 @@ class CustomCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: Constants.kBorderRadius24,
-      onTap: (){
-        if(item.path.isEmpty)return;
+    return MaterialButton(
+      padding: EdgeInsets.all(8),
+      elevation: 4,
+      minWidth: 20,
+      hoverElevation: 16,
+      enableFeedback: true,
+      height:48,
+      shape: RoundedRectangleBorder(borderRadius: Constants.kBorderRadius16),
+      // hoverColor: Colors.black,
+      colorBrightness: Brightness.light,
+      color: Colors.white,
+  // : ,
+  //     borderRadius: Constants.kBorderRadius24,
+      onPressed: () {
+        if (item.path.isEmpty) return;
         context.pushNamed(item.path);
       },
-      child: Container(
-        height: 240,
-        width: 240,
-        decoration: BoxDecoration(
-        color: Colors.orange,
-          borderRadius: Constants.kBorderRadius24
-        ),
-        padding: EdgeInsets.all(24.r),
-        margin: EdgeInsets.all(24.r),
-        alignment: Alignment.center,
-        child: Column(
+      child:  Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              item.img,
-              width: 120,
-              height: 120,
+              item.img??Assets.imagesLogo,
+              width: 120.w,
+              height: 120.h,
             ),
             8.h.heightBox,
             Text(
               item.name,
-              style: TextStyleHelper.headerMedium34,
+              style: TextStyleHelper.headerSmall24,
             ),
           ],
         ),
-      ),
     );
   }
 }
