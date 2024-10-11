@@ -101,13 +101,13 @@ class _CustomListRadioWidgetState<T> extends State<CustomListRadioWidget<T>> {
         (T e) => widget.isButton
             ? MaterialButton(
                 shape: const BeveledRectangleBorder(),
-                color: Colors.white,
+                color: e == widget.groupValue ? Colors.white : Colors.grey[100],
                 onPressed: () {
                   setState(() {
                     _onChanged(e);
                   });
                 },
-                elevation: e == widget.groupValue ? 6 : 0.5,
+                elevation: e == widget.groupValue ? 6 : 0.1,
                 child: CustomRadioWidget<T>(
                   isButton: widget.isButton,
                   title: (e as Enum).name,
