@@ -57,7 +57,6 @@ class TextStyleHelper extends ChangeNotifier {
   ///GETTER FOR TEXT STYLE
   static TextStyle _getTextStyle({
     required double fontSize,
-    String? fontFamily,
   }) {
     return TextStyle(
       fontSize: fontSize,

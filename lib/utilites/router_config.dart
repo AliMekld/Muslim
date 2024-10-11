@@ -38,35 +38,6 @@ GoRouter _router = GoRouter(
           ),
           routes: const [],
         ),
-        // GoRoute(
-        //   name: QuranScreen.routeName,
-        //   path: "${QuranScreen.routeName}",
-        //   pageBuilder: (context, state) => _customTransitionPage(
-        //     const QuranScreen(),
-        //     state,
-        //   ),
-        //   routes: const [],
-        // ),
-        //
-        // GoRoute(
-        //   name: QuranScreen.routeName,
-        //   path: "/${QuranScreen.routeName}",
-        //   pageBuilder: (context, state) => _customTransitionPage(
-        //     const QuranScreen(),
-        //     state,
-        //   ),
-        //   routes: const [],
-        // ),
-        //
-        // GoRoute(
-        //   name: QuranScreen.routeName,
-        //   path: "/${QuranScreen.routeName}",
-        //   pageBuilder: (context, state) => _customTransitionPage(
-        //     const QuranScreen(),
-        //     state,
-        //   ),
-        //   routes: const [],
-        // ),
 
       ],
     ),

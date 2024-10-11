@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:muslim/generated/assets.dart';
 import 'package:muslim/models/surah_model.dart';
 import 'package:muslim/utilites/constants/constants.dart';
 import 'package:muslim/utilites/extenstions.dart';
 import 'package:muslim/utilites/helpers/theme_helper.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
+import '../../Widgets/custom_radio_widget.dart';
 import '../../Widgets/loading_widget.dart';
 import 'home_controller.dart';
 
@@ -47,15 +47,18 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                 centerTitle: true,
                 collapsedHeight: 60,
                 expandedHeight: 80,
-                title: Text(
-                  "مســـــــــلم",
-                  style: TextStyleHelper.headerMedium34.copyWith(height: 2),
+                title: Row(
+                  children: [
+                    Text(
+                      "مســـــــــلم",
+                      style: TextStyleHelper.headerMedium34.copyWith(height: 2),
+                    ),
+                  ],
                 ),
               ),
               SliverToBoxAdapter(
-                child:      32.0.heightBox,
+                child: 32.0.heightBox,
               ),
-         
               SliverGrid(
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
@@ -64,13 +67,24 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                   childCount: con.cardList.length,
                 ),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisSpacing: 16,
-                    mainAxisExtent: 160,
-                    crossAxisCount: 2,
-                    // childAspectRatio: 16 / 9,
-                    mainAxisSpacing: 16,
-                    ),
-              )
+                  crossAxisSpacing: 16,
+                  mainAxisExtent: 160,
+                  crossAxisCount: 2,
+                  // childAspectRatio: 16 / 9,
+                  mainAxisSpacing: 16,
+                ),
+              ),
+              24.0.heightBox.toSliver,
+              CustomListRadioWidget<SystemBrightness>.row(
+                groupValue: con.brightness,
+                itemsList: SystemBrightness.list,
+                onChanged: (_) {
+                  setState(() {
+                    con.brightness = _!;
+                  });
+                  print(con.brightness);
+                },
+              ).widthBox(200).toSliver,
             ]),
           ),
         ),
@@ -90,39 +104,39 @@ class CustomCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       elevation: 4,
       minWidth: 20,
       hoverElevation: 16,
       enableFeedback: true,
-      height:48,
+      height: 48,
       shape: RoundedRectangleBorder(borderRadius: Constants.kBorderRadius16),
       // hoverColor: Colors.black,
       colorBrightness: Brightness.light,
       color: Colors.white,
-  // : ,
-  //     borderRadius: Constants.kBorderRadius24,
+      // : ,
+      //     borderRadius: Constants.kBorderRadius24,
       onPressed: () {
         if (item.path.isEmpty) return;
         context.pushNamed(item.path);
       },
-      child:  Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              item.img??Assets.imagesLogo,
-              width: 120.w,
-              height: 120.h,
-            ),
-            8.h.heightBox,
-            Text(
-              item.name,
-              style: TextStyleHelper.headerSmall24,
-            ),
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            item.img,
+            width: 120.w,
+            height: 120.h,
+          ),
+          8.h.heightBox,
+          Text(
+            item.name,
+            style: TextStyleHelper.headerSmall24,
+          ),
+        ],
+      ),
     );
   }
 }
