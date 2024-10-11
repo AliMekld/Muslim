@@ -76,6 +76,7 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
               ),
               24.0.heightBox.toSliver,
               CustomListRadioWidget<SystemBrightness>.row(
+                isButton: true,
                 groupValue: con.brightness,
                 itemsList: SystemBrightness.list,
                 onChanged: (_) {
@@ -84,7 +85,7 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                   });
                   print(con.brightness);
                 },
-              ).widthBox(200).toSliver,
+              ).toSliver,
             ]),
           ),
         ),

@@ -31,7 +31,7 @@ class _CustomRadioWidgetState<T> extends State<CustomRadioWidget> {
         Transform.scale(
           scale: 1.15,
           child: Radio<T>(
-            splashRadius: widget.isButton? 0:null,
+            splashRadius: widget.isButton ? 0 : null,
             value: widget.value,
             groupValue: widget.groupValue,
             onChanged: widget.onChanged,
@@ -109,6 +109,7 @@ class _CustomListRadioWidgetState<T> extends State<CustomListRadioWidget<T>> {
                 },
                 elevation: e == widget.groupValue ? 6 : 0.5,
                 child: CustomRadioWidget<T>(
+                  isButton: widget.isButton,
                   title: (e as Enum).name,
                   value: e,
                   groupValue: widget.groupValue,
