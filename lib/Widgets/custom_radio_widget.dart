@@ -43,7 +43,7 @@ class _CustomRadioWidgetState<T> extends State<CustomRadioWidget> {
           style: TextStyleHelper.of(context).bodyMedium14,
         ),
       ],
-    ).widthBox(160);
+    ).widthBox(0.3.sw);
   }
 }
 
@@ -102,27 +102,27 @@ class _CustomListRadioWidgetState<T> extends State<CustomListRadioWidget<T>> {
         (T e) => widget.isButton
             ? MaterialButton(
                 shape: const BeveledRectangleBorder(),
-                color: e == widget.groupValue ?ThemePalette.of(context).primaryColor.withOpacity(0.5) : Colors.grey[100],
+                color: e == widget.groupValue ?ThemePalette.of(context).surfaceColor :ThemePalette.of(context).surfaceColor.withOpacity(0.5),
                 onPressed: () {
                   setState(() {
                     _onChanged(e);
                   });
                 },
-                // elevation: e == widget.groupValue ? 6 : 0.1,
+                elevation: e == widget.groupValue ? 6 : 0.1,
                 child: CustomRadioWidget<T>(
                   isButton: widget.isButton,
                   title: (e as Enum).name,
                   value: e,
                   groupValue: widget.groupValue,
                   onChanged: _onChanged,
-                ).addPaddingAll(padding: 8),
+                ).addPaddingAll(padding: 8.r),
               )
             : CustomRadioWidget<T>(
                 title: (e as Enum).name,
                 value: e,
                 groupValue: widget.groupValue,
                 onChanged: _onChanged,
-              ).addPaddingAll(padding: 8),
+              ).addPaddingAll(padding: 8.r),
       )
       .toList();
 
@@ -131,6 +131,7 @@ class _CustomListRadioWidgetState<T> extends State<CustomListRadioWidget<T>> {
     switch (widget._listType) {
       case RadioListType.wrap:
         return Wrap(
+          alignment: WrapAlignment.center,
           spacing: 16,
           runSpacing: 16,
           children: mapItemsList,

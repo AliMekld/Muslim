@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:muslim/core/theming/theme_helper.dart';
 import 'package:muslim/core/theming/theme_provider.dart';
 import 'package:muslim/utilites/constants/constants.dart';
 import 'package:muslim/utilites/get_it.dart';

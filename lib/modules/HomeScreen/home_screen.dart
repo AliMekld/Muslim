@@ -79,7 +79,7 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                 ),
               ),
               24.0.heightBox.toSliver,
-              CustomListRadioWidget<SystemBrightness>.row(
+              CustomListRadioWidget<SystemBrightness>.wrap(
                 isButton: true,
                 groupValue: Provider.of<ThemeProvider>(context).appTheme.isDark==true?SystemBrightness.dark:SystemBrightness.light,
                 itemsList: SystemBrightness.list,
