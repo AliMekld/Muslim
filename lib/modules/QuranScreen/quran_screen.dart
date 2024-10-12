@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:muslim/Widgets/custom_text_field_widget.dart';
+import 'package:muslim/core/theming/theme_helper.dart';
 import 'package:muslim/models/surah_model.dart';
 import 'package:muslim/modules/QuranScreen/quran_controller.dart';
 import 'package:muslim/utilites/constants/constants.dart';
@@ -32,21 +33,21 @@ class _QuranScreenState extends StateMVC<QuranScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: ThemePalette.of(context).backgroundColor,
         body: StretchingOverscrollIndicator(
           axisDirection: AxisDirection.down,
           child: LoadingWidget(
             isLoading: con.loading,
             child: CustomScrollView(slivers: [
               SliverAppBar(
-                backgroundColor: Colors.white,
+                backgroundColor:ThemePalette.of(context).buttonDisabledColor,
                 floating: true,
                 centerTitle: true,
                 collapsedHeight: 60,
                 expandedHeight: 60,
                 title: Text(
                   "القــــران",
-                  style: TextStyleHelper.headerMedium34.copyWith(height: 2),
+                  style: TextStyleHelper.of(context).headerMedium34.copyWith(height: 2),
                 ),
               ),
               SliverPersistentHeader(
@@ -88,7 +89,7 @@ class SurahContainer extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(16)),
+            color: ThemePalette.of(context).surfaceColor, borderRadius: BorderRadius.circular(16)),
         padding: const EdgeInsets.all(16),
         margin: const EdgeInsets.all(4),
         height: 80,
@@ -101,11 +102,11 @@ class SurahContainer extends StatelessWidget {
             children: [
               Text(
                 surah.name ?? "",
-                style: TextStyleHelper.headerSmall24,
+                style: TextStyleHelper.of(context).headerSmall24,
               ),
               Text(
                 surah.revelationType ?? "",
-                style: TextStyleHelper.headerSmall24,
+                style: TextStyleHelper.of(context).headerSmall24,
               ),
             ],
           ),
@@ -137,7 +138,7 @@ class MySliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      color: Colors.white,
+      color:ThemePalette.of(context).surfaceColor,
       height: 80,
       constraints: BoxConstraints(maxHeight: maxExtent, minHeight: minExtent),
       padding: const EdgeInsets.all( 16),

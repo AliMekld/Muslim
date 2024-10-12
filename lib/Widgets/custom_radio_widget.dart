@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim/core/theming/theme_helper.dart';
 import 'package:muslim/utilites/extenstions.dart';
 import 'package:muslim/utilites/helpers/theme_helper.dart';
 
@@ -39,10 +40,10 @@ class _CustomRadioWidgetState<T> extends State<CustomRadioWidget> {
         ),
         Text(
           widget.title ?? "",
-          style: TextStyleHelper.bodyMedium14,
+          style: TextStyleHelper.of(context).bodyMedium14,
         ),
       ],
-    ).widthBox(160.w);
+    ).widthBox(160);
   }
 }
 
@@ -101,13 +102,13 @@ class _CustomListRadioWidgetState<T> extends State<CustomListRadioWidget<T>> {
         (T e) => widget.isButton
             ? MaterialButton(
                 shape: const BeveledRectangleBorder(),
-                color: e == widget.groupValue ? Colors.white : Colors.grey[100],
+                color: e == widget.groupValue ?ThemePalette.of(context).primaryColor.withOpacity(0.5) : Colors.grey[100],
                 onPressed: () {
                   setState(() {
                     _onChanged(e);
                   });
                 },
-                elevation: e == widget.groupValue ? 6 : 0.1,
+                // elevation: e == widget.groupValue ? 6 : 0.1,
                 child: CustomRadioWidget<T>(
                   isButton: widget.isButton,
                   title: (e as Enum).name,

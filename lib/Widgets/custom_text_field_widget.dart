@@ -125,7 +125,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
       widget.validator != null && widget.controller.text.isNotEmpty;
 
   InputDecoration get getDecoration => InputDecoration(
-        labelStyle: TextStyleHelper.bodyLarge16,
+        labelStyle: TextStyleHelper.of(context).bodyLarge16,
         enabled: widget.enabled ?? true,
         hintText: widget.hintText ?? "",
         labelText: widget.lableText ?? "",
@@ -165,7 +165,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
         textAlignVertical: TextAlignVertical.center,
         showCursor: true,
         scrollPhysics: const NeverScrollableScrollPhysics(),
-        style: TextStyleHelper.bodyLarge16,
+        style: TextStyleHelper.of(context).bodyLarge16,
         onTapOutside: (event) {
           FocusScope.of(context).unfocus();
         },

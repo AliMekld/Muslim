@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:muslim/core/theming/theme_helper.dart';
+import 'package:muslim/core/theming/theme_provider.dart';
 import 'package:muslim/models/surah_model.dart';
 import 'package:muslim/utilites/constants/constants.dart';
 import 'package:muslim/utilites/extenstions.dart';
 import 'package:muslim/utilites/helpers/theme_helper.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:provider/provider.dart';
 
 import '../../Widgets/custom_radio_widget.dart';
 import '../../Widgets/loading_widget.dart';
@@ -32,9 +35,10 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme=Provider.of<ThemeProvider>(context);
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor:ThemePalette.of(context).backgroundColor,
         body: StretchingOverscrollIndicator(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           axisDirection: AxisDirection.down,
@@ -42,7 +46,7 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
             isLoading: con.loading,
             child: CustomScrollView(slivers: [
               SliverAppBar(
-                backgroundColor: Colors.white,
+                backgroundColor:ThemePalette.of(context).surfaceColor,
                 floating: true,
                 centerTitle: true,
                 collapsedHeight: 60,
@@ -51,7 +55,7 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                   children: [
                     Text(
                       "مســـــــــلم",
-                      style: TextStyleHelper.headerMedium34.copyWith(height: 2),
+                      style: TextStyleHelper.of(context).headerMedium34.copyWith(height: 2),
                     ),
                   ],
                 ),
@@ -77,12 +81,13 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
               24.0.heightBox.toSliver,
               CustomListRadioWidget<SystemBrightness>.row(
                 isButton: true,
-                groupValue: con.brightness,
+                groupValue: Provider.of<ThemeProvider>(context).appTheme.isDark==true?SystemBrightness.dark:SystemBrightness.light,
                 itemsList: SystemBrightness.list,
                 onChanged: (_) {
                   setState(() {
                     con.brightness = _!;
                   });
+                  theme.changeTheme(con.brightness);
                   print(con.brightness);
                 },
               ).toSliver,
@@ -112,11 +117,7 @@ class CustomCardWidget extends StatelessWidget {
       enableFeedback: true,
       height: 48,
       shape: RoundedRectangleBorder(borderRadius: Constants.kBorderRadius16),
-      // hoverColor: Colors.black,
-      colorBrightness: Brightness.light,
-      color: Colors.white,
-      // : ,
-      //     borderRadius: Constants.kBorderRadius24,
+      color:ThemePalette.of(context).surfaceColor,
       onPressed: () {
         if (item.path.isEmpty) return;
         context.pushNamed(item.path);
@@ -134,7 +135,7 @@ class CustomCardWidget extends StatelessWidget {
           8.h.heightBox,
           Text(
             item.name,
-            style: TextStyleHelper.headerSmall24,
+            style: TextStyleHelper.of(context).headerSmall24,
           ),
         ],
       ),
@@ -157,7 +158,7 @@ class SurahContainer extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(16)),
+            color:ThemePalette.of(context).surfaceColor, borderRadius: BorderRadius.circular(16)),
         padding: const EdgeInsets.all(16),
         margin: const EdgeInsets.all(4),
         height: 80,
@@ -170,11 +171,11 @@ class SurahContainer extends StatelessWidget {
             children: [
               Text(
                 surah.name ?? "",
-                style: TextStyleHelper.headerSmall24,
+                style: TextStyleHelper.of(context).headerSmall24,
               ),
               Text(
                 surah.revelationType ?? "",
-                style: TextStyleHelper.headerSmall24,
+                style: TextStyleHelper.of(context).headerSmall24,
               ),
             ],
           ),

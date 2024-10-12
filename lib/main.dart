@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim/core/theming/theme_helper.dart';
+import 'package:muslim/core/theming/theme_provider.dart';
 import 'package:muslim/utilites/constants/constants.dart';
 import 'package:muslim/utilites/get_it.dart';
 import 'package:muslim/utilites/router_config.dart';
+import 'package:provider/provider.dart';
 
 /// TODO  : ============================>> INIT APP <<=====================================///
 /// -> MVC PATTERN                    =>  MCV PACKAGE -- SINGLETON CLASS -- STATE MVC -- CONTROLLER MVC [done]
@@ -28,7 +31,10 @@ import 'package:muslim/utilites/router_config.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetLocator.initLocator();
-  runApp(const EntryPoint());
+  runApp(MultiProvider(
+    providers: [ChangeNotifierProvider(create: (context) => ThemeProvider())],
+    child: const EntryPoint(),
+  ));
 }
 
 const Size largeSize = Size(1920, 1080);
@@ -50,13 +56,18 @@ class EntryPoint extends StatelessWidget {
       }
       return ScreenUtilInit(
         designSize: appSize,
-        enableScaleText: (){
+        enableScaleText: () {
           return true;
         },
-        child: MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          routerConfig: router,
-        ),
+        child: Consumer<ThemeProvider>(builder: (context, theme, w) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            routerConfig: router,
+            theme: theme.themeData.copyWith(
+            
+            ),
+          );
+        }),
       );
     });
   }

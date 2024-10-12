@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muslim/core/theming/theme_helper.dart';
 
 ///-
 enum AppFonts {
@@ -14,7 +15,11 @@ enum AppFonts {
 }
 
 class TextStyleHelper extends ChangeNotifier {
+  final BuildContext context;
+    TextStyleHelper._(this.context);
   ///-
+  ///--inherted widget
+ static  TextStyleHelper of(BuildContext context)=>TextStyleHelper._(context);
   static AppFonts _appFont = AppFonts.sallem;
 
   ///TODO
@@ -36,17 +41,27 @@ class TextStyleHelper extends ChangeNotifier {
         notifyListeners();
     }
   }
-
+  ///GETTER FOR TEXT STYLE
+   TextStyle _getTextStyle({
+    required double fontSize,
+  }) {
+    return TextStyle(
+      fontSize: fontSize,
+      color: ThemePalette.of(context).primaryTextColor,
+      height: 1.25,
+      fontWeight: FontWeight.normal,
+      fontFamily: AppFonts.sallem.name,
+      fontStyle: FontStyle.normal,
+    );
+  }
   /// TYPO GRAPHY
-  static TextStyle get headerLarge48 => _getTextStyle(fontSize: 48);
-  static TextStyle get headerMedium34 => _getTextStyle(fontSize: 34);
-  static TextStyle get headerSmall24 => _getTextStyle(fontSize: 24);
-
-  static TextStyle get bodyLarge16 => _getTextStyle(fontSize: 16);
-  static TextStyle get bodyMedium14 => _getTextStyle(fontSize: 14);
-  static TextStyle get bodySmall12 => _getTextStyle(fontSize: 12);
-
-  static TextStyle get label8 => _getTextStyle(fontSize: 8);
+   TextStyle get headerLarge48 => _getTextStyle (fontSize: 48);
+   TextStyle get headerMedium34 => _getTextStyle(fontSize: 34);
+   TextStyle get headerSmall24 => _getTextStyle (fontSize: 24);
+   TextStyle get bodyLarge16 => _getTextStyle   (fontSize: 16);
+   TextStyle get bodyMedium14 => _getTextStyle  (fontSize: 14);
+   TextStyle get bodySmall12 => _getTextStyle   (fontSize: 12);
+   TextStyle get label8 => _getTextStyle        (fontSize: 8);
 
   ///TOGGLE FONT
   void toggleFont(AppFonts font) {
@@ -54,19 +69,7 @@ class TextStyleHelper extends ChangeNotifier {
     notifyListeners();
   }
 
-  ///GETTER FOR TEXT STYLE
-  static TextStyle _getTextStyle({
-    required double fontSize,
-  }) {
-    return TextStyle(
-      fontSize: fontSize,
-      color: Colors.black,
-      height: 1.25,
-      fontWeight: FontWeight.normal,
-      fontFamily: AppFonts.sallem.name,
-      fontStyle: FontStyle.normal,
-    );
-  }
+
 
   ///Todo : fetch Font
   Future fetchFont() async {

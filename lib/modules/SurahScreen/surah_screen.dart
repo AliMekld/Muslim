@@ -47,7 +47,7 @@ class _SurahScreenState extends StateMVC<SurahScreen> {
                 expandedHeight: 80,
                 title: Text(
                   "سوره الحاقة",
-                  style: TextStyleHelper.headerMedium34.copyWith(height: 2),
+                  style: TextStyleHelper.of(context).headerMedium34.copyWith(height: 2),
                 ),
               ),
             ]),
