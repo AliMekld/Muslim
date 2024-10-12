@@ -7,6 +7,7 @@ import 'package:muslim/utilites/constants/constants.dart';
 import 'package:muslim/utilites/get_it.dart';
 import 'package:muslim/utilites/router_config.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 /// TODO  : ============================>> INIT APP <<=====================================///
 /// -> MVC PATTERN                    =>  MCV PACKAGE -- SINGLETON CLASS -- STATE MVC -- CONTROLLER MVC [done]
@@ -29,6 +30,8 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  /// this line for removing [#] in web
+  usePathUrlStrategy();
   await GetLocator.initLocator();
   runApp(MultiProvider(
     providers: [ChangeNotifierProvider(create: (context) => ThemeProvider())],
@@ -62,9 +65,7 @@ class EntryPoint extends StatelessWidget {
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             routerConfig: router,
-            theme: theme.themeData.copyWith(
-            
-            ),
+            theme: theme.themeData.copyWith(),
           );
         }),
       );

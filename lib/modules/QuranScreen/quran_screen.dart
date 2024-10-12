@@ -11,7 +11,7 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import '../../Widgets/loading_widget.dart';
 
 class QuranScreen extends StatefulWidget {
-  static const String routeName = "quran";
+  static const String routeName = "/quran";
   const QuranScreen({super.key});
 
   @override

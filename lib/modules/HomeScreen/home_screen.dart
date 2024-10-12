@@ -3,15 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muslim/core/theming/theme_helper.dart';
-import 'package:muslim/core/theming/theme_provider.dart';
 import 'package:muslim/models/surah_model.dart';
 import 'package:muslim/utilites/constants/constants.dart';
 import 'package:muslim/utilites/extenstions.dart';
 import 'package:muslim/utilites/helpers/theme_helper.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:provider/provider.dart';
 
-import '../../Widgets/custom_radio_widget.dart';
 import '../../Widgets/loading_widget.dart';
 import 'home_controller.dart';
 
@@ -35,9 +32,9 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme=Provider.of<ThemeProvider>(context);
     return SafeArea(
       child: Scaffold(
+   
         backgroundColor:ThemePalette.of(context).backgroundColor,
         body: StretchingOverscrollIndicator(
           clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -50,7 +47,7 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                 floating: true,
                 centerTitle: true,
                 collapsedHeight: 60,
-                expandedHeight: 80,
+                expandedHeight: 60  ,
                 title: Row(
                   children: [
                     Text(
@@ -78,19 +75,6 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                   mainAxisSpacing: 16,
                 ),
               ),
-              24.0.heightBox.toSliver,
-              CustomListRadioWidget<SystemBrightness>.wrap(
-                isButton: true,
-                groupValue: Provider.of<ThemeProvider>(context).appTheme.isDark==true?SystemBrightness.dark:SystemBrightness.light,
-                itemsList: SystemBrightness.list,
-                onChanged: (_) {
-                  setState(() {
-                    con.brightness = _!;
-                  });
-                  theme.changeTheme(con.brightness);
-                  print(con.brightness);
-                },
-              ).toSliver,
             ]),
           ),
         ),
