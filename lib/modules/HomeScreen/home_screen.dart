@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muslim/core/theming/theme_helper.dart';
 import 'package:muslim/models/surah_model.dart';
-import 'package:muslim/utilites/constants/assets.dart';
 import 'package:muslim/utilites/constants/constants.dart';
 import 'package:muslim/utilites/extenstions.dart';
 import 'package:muslim/utilites/helpers/theme_helper.dart';
