@@ -1,5 +1,10 @@
 {
     "app": "Muslim",
     "Meccan": "Meccan",
-    "Medinan": "Medinan"
+    "Medinan": "Medinan",
+    "azkar": "Azkar",
+    "quran": "Quran",
+    "doaa": "Doaa",
+    "ahades": "Ahades",
+    "stories": "Atories"
 }

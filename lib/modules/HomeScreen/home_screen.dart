@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muslim/core/theming/theme_helper.dart';
 import 'package:muslim/models/surah_model.dart';
+import 'package:muslim/utilites/constants/assets.dart';
 import 'package:muslim/utilites/constants/constants.dart';
 import 'package:muslim/utilites/extenstions.dart';
 import 'package:muslim/utilites/helpers/theme_helper.dart';
@@ -34,8 +35,7 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-   
-        backgroundColor:ThemePalette.of(context).backgroundColor,
+        backgroundColor: ThemePalette.of(context).backgroundColor,
         body: StretchingOverscrollIndicator(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           axisDirection: AxisDirection.down,
@@ -43,22 +43,21 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
             isLoading: con.loading,
             child: CustomScrollView(slivers: [
               SliverAppBar(
-                backgroundColor:ThemePalette.of(context).surfaceColor,
+                backgroundColor: ThemePalette.of(context).surfaceColor,
                 floating: true,
                 centerTitle: true,
                 collapsedHeight: 60,
-                expandedHeight: 60  ,
+                expandedHeight: 60,
                 title: Row(
                   children: [
                     Text(
                       "مســـــــــلم",
-                      style: TextStyleHelper.of(context).headerMedium34.copyWith(height: 2),
+                      style: TextStyleHelper.of(context)
+                          .headerMedium34
+                          .copyWith(height: 2),
                     ),
                   ],
                 ),
-              ),
-              SliverToBoxAdapter(
-                child: 32.0.heightBox,
               ),
               SliverGrid(
                 delegate: SliverChildBuilderDelegate(
@@ -71,7 +70,7 @@ class _HomeScreenState extends StateMVC<HomeScreen> {
                   crossAxisSpacing: 16,
                   mainAxisExtent: 160,
                   crossAxisCount: 2,
-                  // childAspectRatio: 16 / 9,
+                  childAspectRatio: 16 / 9,
                   mainAxisSpacing: 16,
                 ),
               ),
@@ -98,10 +97,9 @@ class CustomCardWidget extends StatelessWidget {
       elevation: 4,
       minWidth: 20,
       hoverElevation: 16,
-      enableFeedback: true,
       height: 48,
-      shape: RoundedRectangleBorder(borderRadius: Constants.kBorderRadius16),
-      color:ThemePalette.of(context).surfaceColor,
+      shape: RoundedRectangleBorder(borderRadius: Constants.kBorderRadius24),
+      color: ThemePalette.of(context).surfaceColor,
       onPressed: () {
         if (item.path.isEmpty) return;
         context.pushNamed(item.path);
@@ -111,10 +109,11 @@ class CustomCardWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(
+          Image.asset(
             item.img,
-            width: 120.w,
-            height: 120.h,
+            width: 48,
+            height: 48,
+            fit: BoxFit.cover,
           ),
           8.h.heightBox,
           Text(
@@ -142,7 +141,8 @@ class SurahContainer extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-            color:ThemePalette.of(context).surfaceColor, borderRadius: BorderRadius.circular(16)),
+            color: ThemePalette.of(context).surfaceColor,
+            borderRadius: BorderRadius.circular(16)),
         padding: const EdgeInsets.all(16),
         margin: const EdgeInsets.all(4),
         height: 80,

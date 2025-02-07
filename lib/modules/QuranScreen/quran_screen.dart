@@ -108,8 +108,7 @@ class SurahContainer extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                // color: Colors.amber,
+              SizedBox(
                 height: 40,
                 width: 40,
                 child: Stack(
@@ -131,7 +130,7 @@ class SurahContainer extends StatelessWidget {
                 ),
               ),
               Text(
-                surah.name ?? "",
+                (isArabic(context) ? surah.name : surah.englishName) ?? "",
                 style: TextStyleHelper.of(context).headerSmall24,
               ),
               Text(

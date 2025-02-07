@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:muslim/core/language/app_delegate.dart';
 import 'package:muslim/modules/QuranScreen/quran_screen.dart';
+import 'package:muslim/utilites/constants/assets.dart';
+import 'package:muslim/utilites/constants/strings.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class HomeController extends ControllerMVC {
@@ -21,12 +24,28 @@ class HomeController extends ControllerMVC {
   }
 
   bool loading = false;
-  SystemBrightness brightness = SystemBrightness.dark;
+
   List<CardModel> cardList = [
-    CardModel(name: "azkar", path: "", img: ""),
-    CardModel(name: "quran", path: QuranScreen.routeName, img: ""),
-    CardModel(name: "ahades", path: "", img: ""),
-    CardModel(name: "stories", path: "", img: ""),
+    CardModel(
+      name: Strings.azkar.tr,
+      path: "",
+      img: Assets.imagesAzkar,
+    ),
+    CardModel(
+      name: Strings.quran.tr,
+      path: QuranScreen.routeName,
+      img: Assets.imagesQuarn2,
+    ),
+    CardModel(
+      name: Strings.ahades.tr,
+      path: "",
+      img: Assets.imagesAhades,
+    ),
+    CardModel(
+      name: Strings.doaa.tr,
+      path: "",
+      img: Assets.imagesDoaa,
+    ),
   ];
 }
 
@@ -39,14 +58,4 @@ class CardModel {
     required this.img,
     required this.path,
   });
-}
-
-enum SystemBrightness {
-  dark,
-  light;
-
-  static List<SystemBrightness> get list => [
-        SystemBrightness.dark,
-        SystemBrightness.light,
-      ];
 }

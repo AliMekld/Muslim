@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muslim/modules/HomeScreen/home_screen.dart';
 import 'package:muslim/modules/SplashScreen/splash_controller.dart';
@@ -33,7 +34,7 @@ class _SplashScreenState extends StateMVC<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Image.asset(Assets.imagesLogo),
+        child: SvgPicture.asset(Assets.imagesQuarn2),
       ),
     );
   }

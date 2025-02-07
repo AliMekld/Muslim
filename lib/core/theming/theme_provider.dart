@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:muslim/core/theming/theme_helper.dart';
 import 'package:muslim/core/theming/theme_model.dart';
-import 'package:muslim/modules/HomeScreen/home_controller.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeModel get appTheme => _appTheme;
@@ -15,11 +14,11 @@ class ThemeProvider extends ChangeNotifier {
       ).copyWith(extensions: <ThemeExtension<ThemeModel>>[_appTheme]);
 
   ThemeData themeData = _appTheme.isDark ? _darkTheme : _lightTheme;
-  void changeTheme(SystemBrightness brightness) {
+  void changeTheme(Brightness brightness) {
     switch (brightness) {
-      case SystemBrightness.dark:
+      case Brightness.dark:
         _appTheme = ThemePalette.dark();
-      case SystemBrightness.light:
+      case Brightness.light:
         _appTheme = ThemePalette.light();
     }
     notifyListeners();

@@ -12,11 +12,19 @@ class Assets {
 
   static const String fontsWarsh = "assets/fonts/warsh.ttf";
 
+  static const String imagesAhades = "assets/images/ahades.png";
+
+  static const String imagesAzkar = "assets/images/azkar.png";
+
+  static const String imagesDoaa = "assets/images/doaa.png";
+
   static const String imagesHome = "assets/images/home.svg";
 
   static const String imagesLogo = "assets/images/logo.png";
 
   static const String imagesNumberContainer = "assets/images/number_container.svg";
+
+  static const String imagesQuarn2 = "assets/images/quarn2.png";
 
   static const String imagesQuran = "assets/images/quran.svg";
 }
