@@ -5,8 +5,8 @@ import 'package:muslim/core/theming/theme_model.dart';
 import 'package:muslim/utilites/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharesPrefs {
-  SharesPrefs._();
+class SharedPrefs {
+  SharedPrefs._();
 
   ///=================================<<[locator]>>================================================///
   static SharedPreferences prefs = GetLocator.locator.get<SharedPreferences>();
@@ -17,7 +17,7 @@ class SharesPrefs {
   static const String _font = 'font';
 
   ///=================================<<[Setters]>>==========================================================///
-  ///-------------- set theme 
+  ///-------------- set theme
   static void setTheme(ThemeModel theme) {
     if (jsonEncode(theme.toJson()).isNotEmpty) {
       prefs.setString(_theme, jsonEncode(theme.toJson()));
@@ -40,4 +40,12 @@ class SharesPrefs {
       return null;
     }
   }
+
+  ///SET LANGUAGE
+  static Future<void> setLanguage({required String lan}) async {
+    await prefs.setString(_lang, lan);
+  }
+
+  ///GET LANGUAGE
+  static String? getLanguage() => prefs.getString(_lang) ?? "";
 }

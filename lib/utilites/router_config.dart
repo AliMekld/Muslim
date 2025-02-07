@@ -5,13 +5,11 @@ import 'package:muslim/modules/MainLayout/main_layout_widget.dart';
 import 'package:muslim/modules/QuranScreen/quran_screen.dart';
 import 'package:muslim/modules/SplashScreen/splash_screen.dart';
 
-
 GlobalKey<NavigatorState> _navigationKey = GlobalKey<NavigatorState>();
 GoRouter get router => _router;
 GoRouter _router = GoRouter(
   initialLocation: "/",
   navigatorKey: _navigationKey,
-  
   routes: [
     GoRoute(
       path: SplashScreen.routeName,
@@ -26,7 +24,6 @@ GoRouter _router = GoRouter(
               MainLayoutWidget(
                 path: state.fullPath!,
                 child: child,
-              
               ),
               state,
             ),
@@ -38,8 +35,9 @@ GoRouter _router = GoRouter(
               const HomeScreen(),
               state,
             ),
-            routes: [],
+            routes: const [],
           ),
+
           /// Quran Screen
           GoRoute(
             name: QuranScreen.routeName,

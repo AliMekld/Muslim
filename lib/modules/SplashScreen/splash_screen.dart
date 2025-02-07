@@ -21,15 +21,19 @@ class _SplashScreenState extends StateMVC<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 600),(){
-      context.goNamed(HomeScreen.routeName);
+    Future.delayed(const Duration(milliseconds: 600), () {
+      if (mounted) {
+        context.goNamed(HomeScreen.routeName);
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(child: Image.asset(Assets.imagesLogo),),
+      body: Center(
+        child: Image.asset(Assets.imagesLogo),
+      ),
     );
   }
 }

@@ -53,11 +53,17 @@ class _MainLayoutWidgetState extends State<MainLayoutWidget> {
 }
 
 List<MenuModel> get _MenuList => const [
-      MenuModel( 
-        ///todo make vscode generate assets witout using any differant logic in code  and change those two images 
-          route: HomeScreen.routeName, img:Assets.imagesLogo, title: "Home"),
       MenuModel(
-          route: QuranScreen.routeName, img: Assets.imagesLogo, title: "Quran"),
+
+          ///todo make vscode generate assets witout using any differant logic in code  and change those two images
+          route: HomeScreen.routeName,
+          img: Assets.imagesLogo,
+          title: "Home"),
+      MenuModel(
+        route: QuranScreen.routeName,
+        img: Assets.imagesLogo,
+        title: "Quran",
+      ),
     ];
 
 class MenuModel {

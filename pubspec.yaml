@@ -11,8 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
+  flutter_localizations:
+    sdk: flutter
   cupertino_icons: ^1.0.6
   # RESPONSIVE CONFIG
   flutter_screenutil: ^5.9.3
@@ -40,6 +40,7 @@ dependencies:
   equatable: ^2.0.5
   # Svg Pictures
   flutter_svg: ^2.0.10+1
+  intl:
 
 
 #  Set App Icon
@@ -97,4 +98,12 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+    - i18n/
 
+
+flutter_assets:
+  assets_path: assets/
+  output_path: lib/utilites/constants/
+  filename: assets.dart
+  field_prefix: 
+  ignore_comments: true
