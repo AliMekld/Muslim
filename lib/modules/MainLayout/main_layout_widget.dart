@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muslim/core/theming/theme_helper.dart';
-import 'package:muslim/generated/assets.dart';
 import 'package:muslim/modules/HomeScreen/home_screen.dart';
 import 'package:muslim/modules/QuranScreen/quran_screen.dart';
 import 'package:muslim/utilites/extenstions.dart';
+
+import '../../utilites/constants/assets.dart';
 
 class MainLayoutWidget extends StatefulWidget {
   static const String routeName = 'mainLayout';
@@ -63,7 +64,7 @@ List<MenuModel> get _MenuList => const [
           title: "Home"),
       MenuModel(
         route: QuranScreen.routeName,
-        img: Assets.imagesLogo,
+        img: Assets.imagesHome,
         title: "Quran",
       ),
     ];

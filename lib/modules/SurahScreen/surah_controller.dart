@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
-
 class SurahController extends ControllerMVC {
   ///SingleTone
   static SurahController? _this;
@@ -21,5 +20,4 @@ class SurahController extends ControllerMVC {
   }
 
   bool loading = false;
-
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:muslim/Widgets/custom_text_field_widget.dart';
+import 'package:muslim/core/language/app_delegate.dart';
 import 'package:muslim/core/theming/theme_helper.dart';
 import 'package:muslim/models/surah_model.dart';
 import 'package:muslim/modules/QuranScreen/quran_controller.dart';
+import 'package:muslim/utilites/constants/assets.dart';
 import 'package:muslim/utilites/constants/constants.dart';
 import 'package:muslim/utilites/helpers/theme_helper.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
@@ -40,14 +43,16 @@ class _QuranScreenState extends StateMVC<QuranScreen> {
             isLoading: con.loading,
             child: CustomScrollView(slivers: [
               SliverAppBar(
-                backgroundColor:ThemePalette.of(context).buttonDisabledColor,
+                backgroundColor: ThemePalette.of(context).buttonDisabledColor,
                 floating: true,
                 centerTitle: true,
                 collapsedHeight: 60,
                 expandedHeight: 60,
                 title: Text(
                   "القــــران",
-                  style: TextStyleHelper.of(context).headerMedium34.copyWith(height: 2),
+                  style: TextStyleHelper.of(context)
+                      .headerMedium34
+                      .copyWith(height: 2),
                 ),
               ),
               SliverPersistentHeader(
@@ -86,10 +91,13 @@ class SurahContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: Constants.kBorderRadius16,
-      onTap: () {},
+      onTap: () {
+        // context.pushNamed(SurahScreen.routeName);
+      },
       child: Container(
         decoration: BoxDecoration(
-            color: ThemePalette.of(context).surfaceColor, borderRadius: BorderRadius.circular(16)),
+            color: ThemePalette.of(context).surfaceColor,
+            borderRadius: BorderRadius.circular(16)),
         padding: const EdgeInsets.all(16),
         margin: const EdgeInsets.all(4),
         height: 80,
@@ -100,12 +108,34 @@ class SurahContainer extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Container(
+                // color: Colors.amber,
+                height: 40,
+                width: 40,
+                child: Stack(
+                  children: [
+                    SvgPicture.asset(
+                      Assets.imagesNumberContainer,
+                      height: 48,
+                      width: 48,
+                      fit: BoxFit.fill,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        surah.number?.toString() ?? "",
+                        style: TextStyleHelper.of(context).bodyMedium14,
+                      ),
+                    )
+                  ],
+                ),
+              ),
               Text(
                 surah.name ?? "",
                 style: TextStyleHelper.of(context).headerSmall24,
               ),
               Text(
-                surah.revelationType ?? "",
+                surah.revelationType?.tr ?? "",
                 style: TextStyleHelper.of(context).headerSmall24,
               ),
             ],
@@ -138,10 +168,10 @@ class MySliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      color:ThemePalette.of(context).surfaceColor,
+      color: ThemePalette.of(context).surfaceColor,
       height: 80,
       constraints: BoxConstraints(maxHeight: maxExtent, minHeight: minExtent),
-      padding: const EdgeInsets.all( 16),
+      padding: const EdgeInsets.all(16),
       child: CustomTextFieldWidget(
         lableText: "بحــــث",
         controller: con.searchController,

@@ -40,7 +40,7 @@ class EntryPoint extends StatelessWidget {
   Widget build(BuildContext context) {
     final appLang = Provider.of<LanguageProvider>(context);
     final appTheme = Provider.of<ThemeProvider>(context);
-
+    appLang.fetchLocale();
     return LayoutBuilder(builder: (context, constants) {
       Size appSize;
       if (constants.maxWidth <= Constants.smallScreenMaxHeight) {

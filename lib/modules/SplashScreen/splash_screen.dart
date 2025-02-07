@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:muslim/generated/assets.dart';
 import 'package:muslim/modules/HomeScreen/home_screen.dart';
 import 'package:muslim/modules/SplashScreen/splash_controller.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+
+import '../../utilites/constants/assets.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName = "/";
