@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:muslim/core/theming/theme_helper.dart';
@@ -102,7 +104,9 @@ class _CustomListRadioWidgetState<T> extends State<CustomListRadioWidget<T>> {
         (T e) => widget.isButton
             ? MaterialButton(
                 shape: const BeveledRectangleBorder(),
-                color: e == widget.groupValue ?ThemePalette.of(context).surfaceColor :ThemePalette.of(context).surfaceColor.withOpacity(0.5),
+                color: e == widget.groupValue
+                    ? ThemePalette.of(context).surfaceColor
+                    : ThemePalette.of(context).surfaceColor.withOpacity(0.5),
                 onPressed: () {
                   setState(() {
                     _onChanged(e);

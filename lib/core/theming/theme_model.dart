@@ -1,10 +1,12 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:muslim/core/theming/theme_helper.dart';
 
 class ThemeModel extends ThemeExtension<ThemeModel> {
   /// get defult theme from device
-static  ThemeModel get defultTheme =>
+  static ThemeModel get defultTheme =>
       SchedulerBinding.instance.platformDispatcher.platformBrightness ==
               Brightness.dark
           ? ThemePalette.dark()

@@ -22,7 +22,6 @@ class ThemeProvider extends ChangeNotifier {
       case SystemBrightness.light:
         _appTheme = ThemePalette.light();
     }
-    print(_appTheme.toJson());
     notifyListeners();
   }
 }
